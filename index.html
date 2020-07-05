@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>今は何時かな？</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="text">
+            <h1>今は何時かな？</h1>
+            <p>今は・・・<span id="time"></span>！</p>
+            <p id="meirei"></p>
+        </div>
+    </div>
+    <script>
+        'use strict';
+        
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.getMonth();
+        const date = now.getDate();
+        const hour = now.getHours();
+        const min = now. getMinutes();
+        
+        let ampm = '';
+        if(hour < 13) {
+            ampm = 'pm';
+        } else {
+            ampm = 'am';
+        }
+        
+        const output = `${year}/${month}/${date} ${hour % 12}:${min}${ampm}`;
+        document.getElementById('time').textContent = output;
+
+        if(hour >= 0 && hour < 5) {
+            document.getElementById('meirei').textContent = '早く寝なさい！';
+        } else if(hour >= 5 && hour < 11) {
+            document.getElementById('meirei').textContent = 'いい朝だね！';
+        } else if(hour >= 11 && hour < 16) {
+            document.getElementById('meirei').textContent = 'お昼は食べた？';
+        } else if(hour >= 16 && hour < 21) {
+            document.getElementById('meirei').textContent = '晩ご飯いっぱい食べよー！';
+        } else if(hour >= 21 && hour < 0) {
+            document.getElementById('meirei').textContent = '良い子は寝る時間。';
+        }
+        </script>
+</body>
+</html>
